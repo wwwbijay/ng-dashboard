@@ -5,6 +5,7 @@
         class="login-form validate-form"
         (ngSubmit)="onSubmit()"
         [formGroup]="loginForm"
+        #loginFormId="ngForm"
       >
         <div class="login-logo">
           <img src="./assets/mypay-logo.png" alt="MyPay logo" />
@@ -16,13 +17,43 @@
         </div>
 
         <div class="wrap-input validate-input" data-validate="Enter password">
-          <input class="input" type="text" name="username" />
+          <input
+            class="input"
+            type="text"
+            name="username"
+            formControlName="username"
+            [class.has-val]="loginForm.get('username')?.value.length"
+          />
           <span class="focus-input" data-placeholder="UserName"></span>
+          <small
+              class="err_msg"
+              *ngIf="
+                username &&
+                username.invalid &&
+                (username.touched || loginFormId.submitted)"
+            >
+              Please enter valid username.
+            </small>
         </div>
 
         <div class="wrap-input validate-input" data-validate="Enter password">
-          <input class="input" type="password" name="password" />
+          <input
+            class="input"
+            type="password"
+            name="password"
+            formControlName="password"
+            [class.has-val]="loginForm.get('password')?.value.length"
+          />
           <span class="focus-input" data-placeholder="Password"></span>
+          <small
+              class="err_msg"
+              *ngIf="
+                password &&
+                password.invalid &&
+                (password.touched || loginFormId.submitted)"
+            >
+              Please enter valid password.
+            </small>
         </div>
 
         <div class="form-check remember_me_wrap">

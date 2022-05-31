@@ -16,3 +16,10 @@ h1,h2,h3,h4,h5{
 img {
   max-width: 100%;
 }
+
+.err_msg{
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  bottom: -22px;
+}
