@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables";
 
 html,
 body {
   height: 100%;
   margin: 0;
+  font-family: $body-font;
 }
 body {
   margin: 0;
 }
-
+h1,h2,h3,h4,h5{
+  font-family: $heading-font;
+}
 img {
   max-width: 100%;
 }

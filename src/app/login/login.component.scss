@@ -1,32 +1,26 @@
-$primary-color: #e45415;
-$accent-color: #f8e401;
 
+@import "src/variables.scss";
 
 .container-login {
     width: 100%;
     min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 15px 0;
-    background: #f2f2f2;
+    background: $light-bg;
     .wrap-login {
         width: 390px;
         background: #fff;
         border-radius: 10px;
         overflow: hidden;
         padding: 40px 55px 40px 55px;
-      
-        box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-        -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-        -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: $login-box-shadow;
+        -moz-box-shadow: $login-box-shadow;
+        -webkit-box-shadow: $login-box-shadow;
+        -o-box-shadow: $login-box-shadow;
+        -ms-box-shadow: $login-box-shadow;
       }
       .login-form {
         width: 100%;
@@ -36,13 +30,11 @@ $accent-color: #f8e401;
       }
       .login-form-title {
         display: block;
-        font-family: inherit;
-        font-size: 30px;
-        color: #555;
+        font-family: $heading-font;
+        font-size: 40px;
+        color: $font-color;
         line-height: 1.2;
-        font-weight: normal;
         margin: 10px 0;
-
         .login-form-title i {
             font-size: 60px;
           }
@@ -53,14 +45,13 @@ $accent-color: #f8e401;
       }
   }
   
-  
   input[type="text"]{
     width: 100%;
     position: relative;
-    border-bottom: 2px solid #adadad;
+    border-bottom: 2px solid $input-border-color;
     font-family: inherit;
     font-size: 15px;
-    color: #555555;
+    color: $font-color;
     line-height: 1.2;
     display: block;
     width: 100%;
@@ -69,7 +60,7 @@ $accent-color: #f8e401;
     padding: 0 5px;
     width: 100%;
     position: relative;
-    border-bottom: 2px solid #adadad;
+    border-bottom: 2px solid $input-border-color;
   }
 
   .wrap-input {
@@ -79,23 +70,23 @@ $accent-color: #f8e401;
   .wrap-input {
     width: 100%;
     position: relative;
-    border-bottom: 2px solid #adadad;
+    border-bottom: 2px solid $input-border-color;
     margin-bottom: 37px;
     .input {
       font-family: inherit;
       font-size: 15px;
-      color: #555555;
+      color: $font-color;
       line-height: 1.2;
       display: block;
       width: 100%;
       height: 45px;
       background: transparent;
       padding: 0 5px;
+      border: none;
+      outline: none;
     }
   }
   
-  
-
   .focus-input {
     position: absolute;
     display: block;
@@ -114,25 +105,19 @@ $accent-color: #f8e401;
     left: 0;
     width: 0;
     height: 2px;
-  
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
     transition: all 0.4s;
-  
-    background: #e45415;
-    background: -webkit-linear-gradient(to right, #f1b307, #e87210);
-    background: -o-linear-gradient(to right, #f1b307, #e87210);
-    background: -moz-linear-gradient(to right, #f1b307, #e87210);
-    background: linear-gradient(to right, #f1b307, #e87210);
+    background: $primary-color;
+    background: -webkit-linear-gradient(to right, $accent-color, $primary-color);
+    background: -o-linear-gradient(to right, $accent-color, $primary-color);
+    background: -moz-linear-gradient(to right, $accent-color, $primary-color);
+    background: linear-gradient(to right, $accent-color, $primary-color);
   }
   
   .focus-input::after {
     font-family: inherit;
     font-size: 15px;
-    color: #999999;
+    color: $font-color-light;
     line-height: 1.2;
-  
     content: attr(data-placeholder);
     display: block;
     width: 100%;
@@ -140,15 +125,11 @@ $accent-color: #f8e401;
     top: 16px;
     left: 0px;
     padding-left: 5px;
-  
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
     transition: all 0.4s;
   }
   
   .input:focus + .focus-input::after {
-    top: -15px;
+    top: -8px;
   }
   
   .input:focus + .focus-input::before {
@@ -156,59 +137,26 @@ $accent-color: #f8e401;
   }
   
   .has-val.input + .focus-input::after {
-    top: -15px;
+    top: -8px;
   }
   
   .has-val.input + .focus-input::before {
     width: 100%;
   }
   
-  /*---------------------------------------------*/
-  .btn-show-pass {
-    font-size: 15px;
-    color: #999999;
-  
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    right: 0;
-    padding-right: 5px;
-    cursor: pointer;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
+  .remember_me_wrap{
+    input[type="checkbox"] {
+      margin: 20px 10px;
+    }
+    .form-check-label{
+      cursor: pointer;
+    }
   }
-  
-  .btn-show-pass:hover {
-    color: #e45415;
-    color: -webkit-linear-gradient(to right, #f1b307, #b721ff);
-    color: -o-linear-gradient(to right, #f1b307, #b721ff);
-    color: -moz-linear-gradient(to right, #f1b307, #b721ff);
-    color: linear-gradient(to right, #f1b307, #b721ff);
-  }
-  
-  .btn-show-pass.active {
-    color: #e45415;
-    color: -webkit-linear-gradient(to right, #f1b307, #e87210);
-    color: -o-linear-gradient(to right, #f1b307, #e87210);
-    color: -moz-linear-gradient(to right, #f1b307, #e87210);
-    color: linear-gradient(to right, #f1b307, #e87210);
-  }
-  
+ 
+
   /*------------------------------------------------------------------
   [ Button ]*/
   .container-login-form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -230,17 +178,17 @@ $accent-color: #f8e401;
     z-index: -1;
     width: 100%;
     height: 100%;
-    background: #e45415;
+    background: $primary-color;
     background: -webkit-linear-gradient(
       right,
-      #e45415,
-      #e87210,
-      #e45415,
-      #e87210
+      $primary-color,
+      $primary-color,
+      $primary-color,
+      $primary-color
     );
-    background: -o-linear-gradient(to left, #e45415, #e87210, #e45415, #e87210);
-    background: -moz-linear-gradient(to left, #e45415, #e87210, #e45415, #e87210);
-    background: linear-gradient(to left, #e45415, #e87210, #e45415, #e87210);
+    background: -o-linear-gradient(to left, $primary-color, $primary-color, $primary-color, $primary-color);
+    background: -moz-linear-gradient(to left, $primary-color, $primary-color, $primary-color, $primary-color);
+    background: linear-gradient(to left, $primary-color, $primary-color, $primary-color, $primary-color);
     top: 0;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -254,22 +202,18 @@ $accent-color: #f8e401;
     color: #fff;
     line-height: 1.2;
     text-transform: uppercase;
-  
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: $primary-color;
     padding: 0 20px;
     width: 100%;
     height: 50px;
+    display: block;
+    border: none;
+    cursor: pointer;
+    :hover .login-form-bgbtn {
+      left: 0;
+    }
   }
   
-  .wrap-login-form-btn:hover .login-form-bgbtn {
-    left: 0;
-  }
-  .remember_me_wrap input[type="checkbox"] {
-    margin-right: 10px;
-  }
+  
+
+  
