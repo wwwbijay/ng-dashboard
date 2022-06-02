@@ -10,19 +10,30 @@ body {
 body {
   margin: 0;
 }
-h1,h2,h3,h4,h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: $heading-font;
 }
 img {
   max-width: 100%;
 }
 
-.err_msg{
+.err_msg {
   color: red;
   font-size: 12px;
   position: absolute;
   bottom: -22px;
 }
-.validation_error{
-  background: #ff000044;
+.validation_error {
+  background: #ff000022;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: relative;
+  top: -15px;
+  margin: 10px 0;
+  font-size: 14px;
+  color: red;
 }

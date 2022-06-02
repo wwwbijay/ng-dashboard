@@ -21,15 +21,14 @@ export class AuthService {
     role: '',
   });
 
- 
-  
   constructor(private http: HttpClient, private _router: Router) {}
 
   register(model: any) {
     return this.http.post(this.baseUrl + '/api/UserManager/register', model);
   }
   isLoggedIn():boolean {
-    const token = localStorage.getItem('token') || undefined;
+    let profile = this.loadFromLocalStorage();
+    const token = profile?.token;
     return !this.jwthelper.isTokenExpired(token);
   }
 

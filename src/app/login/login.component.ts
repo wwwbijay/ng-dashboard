@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
             role: decodedToken.clientrole,
           }
           this._auth.saveToLocalStorage(userProfile);
-          this._router.navigate(['']);
+          this._router.navigate(['/']);
         },
         error: (err:any) =>{
           this.loginError = true;
