@@ -16,6 +16,12 @@
           <p>Welcome! Log in to your MyPay account</p>
         </div>
 
+        <div *ngIf="loginError" class="validation_error">
+          
+            {{errorMessage}}
+          
+        </div>
+
         <div class="wrap-input validate-input" data-validate="Enter password">
           <input
             class="input"
