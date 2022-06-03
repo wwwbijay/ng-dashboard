@@ -27,9 +27,8 @@ export class AuthService {
     return this.http.post(this.baseUrl + '/api/UserManager/register', model);
   }
   isLoggedIn():boolean {
-    let profile = this.loadFromLocalStorage();
-    const token = profile?.token;
-    return !this.jwthelper.isTokenExpired(token);
+    const user = this.loadFromLocalStorage();
+    return !this.jwthelper.isTokenExpired(user.token);
   }
 
   login(model: any) {
@@ -42,8 +41,8 @@ export class AuthService {
   }
 
   loadFromLocalStorage(): UserModel {
-    if (this.userProfile.value.companyCode == '') {
-      let fromLocalStorage = localStorage.getItem('user-profile');
+    if (!this.userProfile.value.token) {
+      let fromLocalStorage = localStorage.getItem('profile');
       if (fromLocalStorage) {
         let userInfo = JSON.parse(fromLocalStorage);
         this.userProfile.next(userInfo);
