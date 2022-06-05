@@ -3,7 +3,7 @@
   <p>Please fill in the following form and submit.</p>
 </div>
 <div class="dialog-content" mat-dialog-content>
-  <form>
+  <form [formGroup]="createClient">
   
     <table class="example-full-width" cellspacing="10px">
       <tr>
@@ -51,12 +51,15 @@
               </mat-form-field>
         </td>
       </tr>
-      <tr>
+      <tr class="">
         <td colspan="2">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Role</mat-label>
-                <input type="password" matInput />
-              </mat-form-field>
+          <section class="example-section">
+            <h4 class="example-margin">Select Role:</h4>
+            <mat-radio-group formControlName ="role">
+              <mat-radio-button class="mr-20" value="admin">Admin</mat-radio-button>
+              <mat-radio-button class="mr-20" value="client">Client</mat-radio-button>
+            </mat-radio-group>
+          </section>
         </td>
       </tr>
     </table>

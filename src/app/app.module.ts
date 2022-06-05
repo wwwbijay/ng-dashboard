@@ -3,24 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+/* Material Modules Import */
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 
-
-
-import { ClientDetailsComponent } from './client-details/client-details.component';
+/* Components Import */
+import { AppComponent } from './app.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ClientDetailsComponent } from './partials/client-details/client-details.component';
 import { TopNavComponent } from './shared/layout/top-nav/top-nav.component';
 import { CreateClientComponent } from './dialogs/create-client/create-client.component';
 import { EditClientComponent } from './dialogs/edit-client/edit-client.component';
@@ -47,7 +45,8 @@ import { DeleteClientComponent } from './dialogs/delete-client/delete-client.com
     ReactiveFormsModule,
     MatTableModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

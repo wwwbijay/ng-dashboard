@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
-import { CreateClientComponent } from '../dialogs/create-client/create-client.component';
-import { DeleteClientComponent } from '../dialogs/delete-client/delete-client.component';
-import { EditClientComponent } from '../dialogs/edit-client/edit-client.component';
-import { ClientsService } from '../services/clients.service';
-import { ClientModel } from '../shared/models/client.model';
-import { UserModel } from '../shared/models/user.model';
+import { AuthService } from '../../auth/auth.service';
+import { CreateClientComponent } from '../../dialogs/create-client/create-client.component';
+import { DeleteClientComponent } from '../../dialogs/delete-client/delete-client.component';
+import { EditClientComponent } from '../../dialogs/edit-client/edit-client.component';
+import { ClientsService } from '../../services/clients.service';
+import { ClientModel } from '../../shared/models/client.model';
+import { UserModel } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-dashboard',

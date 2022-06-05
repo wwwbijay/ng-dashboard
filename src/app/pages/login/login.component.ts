@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { IUser } from '../auth/IUser';
-import { UserModel } from '../shared/models/user.model';
+import { IUser } from '../../auth/IUser';
+import { UserModel } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-login',
