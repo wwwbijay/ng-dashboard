@@ -23,9 +23,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private _router: Router) {}
 
-  register(model: any) {
-    return this.http.post(this.baseUrl + '/api/CompanyManager/create-company', model);
-  }
   isLoggedIn():boolean {
     const user = this.loadFromLocalStorage();
     return !this.jwthelper.isTokenExpired(user.token);

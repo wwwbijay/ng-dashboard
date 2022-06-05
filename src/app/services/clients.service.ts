@@ -30,4 +30,8 @@ export class ClientsService {
     );
   }
 
+  register(model: any) {
+    return this.http.post(baseUrl + '/api/CompanyManager/create-company', model, this.options);
+  }
+
 }

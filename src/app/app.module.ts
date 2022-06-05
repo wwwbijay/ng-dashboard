@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 /* Components Import */
@@ -46,7 +48,8 @@ import { DeleteClientComponent } from './dialogs/delete-client/delete-client.com
     MatTableModule,
     MatDialogModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

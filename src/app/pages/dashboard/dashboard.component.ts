@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { CreateClientComponent } from '../../dialogs/create-client/create-client.component';
@@ -29,7 +30,8 @@ export class DashboardComponent implements OnInit {
     public _router: Router,
     private _auth: AuthService,
     private _client: ClientsService,
-    public _dialog: MatDialog
+    public _dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -45,8 +47,7 @@ export class DashboardComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
-      },
-      complete: () => {},
+      }
     });
   }
 
@@ -54,9 +55,12 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this._dialog.open(CreateClientComponent, {
       width: '50%',
     });
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((x: any) => {
+      if ( !!x ){
+        console.log(x);
+        this.processData(x);
+      }
+        
     });
   }
 
@@ -69,9 +73,24 @@ export class DashboardComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
   deleteClient(code: any) {
     const dialogRef = this._dialog.open(DeleteClientComponent, {
       width: '50%',
+    });
+  }
+
+  processData(data:any){
+    this.OpenSnackBar(data);
+    // this.getAllClients();
+  }
+
+  OpenSnackBar(message:any){
+    this._snackBar.open(message, 'x', {
+      duration: 4 * 1000,
+      horizontalPosition: 'left',
+      verticalPosition: 'bottom',
+      panelClass: ['alert', 'alert-success'],
     });
   }
 

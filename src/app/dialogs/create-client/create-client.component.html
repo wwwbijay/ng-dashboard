@@ -2,69 +2,114 @@
   <h3 mat-dialog-title>Register New Company</h3>
   <p>Please fill in the following form and submit.</p>
 </div>
-<div class="dialog-content" mat-dialog-content>
-  <form [formGroup]="createClient">
-  
+<form [formGroup]="createClientForm" (ngSubmit)="createClient()">
+  <div class="dialog-content" mat-dialog-content>
     <table class="example-full-width" cellspacing="10px">
       <tr>
         <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Company Name</mat-label>
-                <input matInput placeholder="Eg: Smart Card Nepal" />
-              </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Company Name</mat-label>
+            <input
+              matInput
+              placeholder="Eg: Smart Card Nepal"
+              formControlName="companyName"
+            />
+            <mat-error *ngIf="companyName && companyName.hasError('required')">
+              Company Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
         </td>
         <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>User Name</mat-label>
-                <input matInput />
-              </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="userName" />
+            <mat-error *ngIf="userName && userName.hasError('required')">
+              User Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="email@mail.com" />
-              </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="email@mail.com"
+              formControlName="email"
+        
+            />
+            <mat-error *ngIf="email && email.hasError('email') && !email.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="email && email.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+         
         </td>
         <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Telephone</mat-label>
-                <span matPrefix>+977 &nbsp;</span>
-                <input type="tel" matInput placeholder="9851000000">
-              </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Phone</mat-label>
+            <span matPrefix>+977 &nbsp;</span>
+            <input
+              type="tel"
+              matInput
+              placeholder="9851000000"
+              formControlName="phoneNumber"
+            />
+            <mat-error *ngIf="phoneNumber && phoneNumber.hasError('required')">
+              Phone is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td colspan="2">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Password</mat-label>
-                <input type="password" matInput />
-              </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" />
+            <mat-error *ngIf="password && password.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td colspan="2">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Address</mat-label>
-                <textarea matInput placeholder="Radhe Radhe, Bhaktapur..."></textarea>
-              </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              placeholder="Radhe Radhe, Bhaktapur..."
+              formControlName="address"
+            ></textarea>
+          </mat-form-field>
         </td>
       </tr>
       <tr class="">
         <td colspan="2">
           <section class="example-section">
             <h4 class="example-margin">Select Role:</h4>
-            <mat-radio-group formControlName ="role">
-              <mat-radio-button class="mr-20" value="admin">Admin</mat-radio-button>
-              <mat-radio-button class="mr-20" value="client">Client</mat-radio-button>
+            <mat-radio-group formControlName="role">
+              <mat-radio-button class="mr20" value="admin"
+                >Admin</mat-radio-button
+              >
+              <mat-radio-button class="mr20" value="client"
+                >Client</mat-radio-button
+              >
+              <mat-error *ngIf="role && role.hasError('required')">
+                Please select a role.
+              </mat-error>
             </mat-radio-group>
           </section>
         </td>
       </tr>
     </table>
-  </form>
-</div>
-<div class="dialog-footer" mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div>
+  </div>
+  <div class="dialog-footer" mat-dialog-actions>
+    <button mat-button mat-dialog-close class="mr20">Close</button>
+    <button class="btn-create" type="submit">Create</button>
+  </div>
+</form>
