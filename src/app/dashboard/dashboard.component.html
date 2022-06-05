@@ -1,7 +1,7 @@
 <top-nav></top-nav>
 <section class="container">
   <div class="wrap">
-    <div id="main" class="main">
+    <div *ngIf="currentUser?.role === 'admin'; else adminComponent"  id="main" class="main">
       <div class="page-title">
         <h1>Client List</h1>
         <a [routerLink]="'/'" (click)="newClient()" class="btn-create">
@@ -63,5 +63,9 @@
       <!--Client List ENds-->
     </div>
     <!--#main ends-->
+
+    <ng-template #adminComponent>
+      <client-details></client-details>
+    </ng-template>
   </div>
 </section>
