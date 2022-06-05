@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
       let authFlow = this._auth.login(login_model);
       authFlow.subscribe({
         next: (user: any) =>{
-          
           const decodedToken = this.jwthelper.decodeToken(user.token);
           let userProfile:UserModel = {
             token: user.token,

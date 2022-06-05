@@ -24,7 +24,7 @@ export class AuthService {
   constructor(private http: HttpClient, private _router: Router) {}
 
   register(model: any) {
-    return this.http.post(this.baseUrl + '/api/UserManager/register', model);
+    return this.http.post(this.baseUrl + '/api/CompanyManager/create-company', model);
   }
   isLoggedIn():boolean {
     const user = this.loadFromLocalStorage();
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   login(model: any) {
-    return this.http.post(this.baseUrl + '/api/Client/client-login', model);
+    return this.http.post(this.baseUrl + '/api/CompanyManager/company-login', model);
   }
 
   saveToLocalStorage(user: UserModel) {
@@ -43,7 +43,7 @@ export class AuthService {
   loadFromLocalStorage(): UserModel {
     if (!this.userProfile.value.token) {
       let fromLocalStorage = localStorage.getItem('profile');
-      if (fromLocalStorage) {
+      if (!!fromLocalStorage) {
         let userInfo = JSON.parse(fromLocalStorage);
         this.userProfile.next(userInfo);
       }

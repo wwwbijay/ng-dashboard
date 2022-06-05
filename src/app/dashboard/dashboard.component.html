@@ -1,10 +1,67 @@
-<div id="main" class="main">
+<top-nav></top-nav>
+<section class="container">
   <div class="wrap">
-    <!--Client List START-->
-    <div class="client-list">
-      <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+    <div id="main" class="main">
+      <div class="page-title">
+        <h1>Client List</h1>
+        <a [routerLink]="'/'" (click)="newClient()" class="btn-create">
+          <span class="material-icons edit">add</span> Create New
+        </a>
+      </div>
+      <!--Client List START-->
+      <div class="client-list">
+        <table
+          mat-table
+          [dataSource]="clientLists"
+          class="data-table mat-elevation-z2"
+        >
+          <!-- Position Column -->
+          <ng-container matColumnDef="clientCode">
+            <th mat-header-cell *matHeaderCellDef>Client Code</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.companyCode }}
+            </td>
+          </ng-container>
 
-    </div><!--Client List ENds-->
+          <!-- Name Column -->
+          <ng-container matColumnDef="clientName">
+            <th mat-header-cell *matHeaderCellDef>Client Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.companyName }}
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef>User Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef>Role</th>
+            <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <a [routerLink]="'/'" (click)="updateClient(element.companyCode)">
+                <span class="material-icons edit">edit</span>
+              </a>
+              <a [routerLink]="'/'" (click)="deleteClient(element.companyCode)">
+                <span class="material-icons delete"> delete </span>
+              </a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <!--Client List ENds-->
+    </div>
+    <!--#main ends-->
   </div>
-</div>
-<!--#main ends-->
+</section>
