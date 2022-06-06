@@ -83,6 +83,13 @@ General
 }
 
 /* CSS */
+.page-title .btn-create{
+  position: absolute;
+  right: 0;
+  top: 10px;
+  padding-left: 45px;
+}
+
 .btn-create {
   align-items: center;
   background-image: linear-gradient(135deg, $primary-color 10%, $primary-tint-color);
@@ -94,40 +101,30 @@ General
   display: inline-block;
   text-decoration: none;
   padding: 14px 20px;
+  &:hover{
+    background-image: linear-gradient(135deg, $primary-tint-color 10%, $primary-color);
+  }
+  &:hover span {
+    transform: scale(.7);
+    opacity: .75;
+  }
+  &:active {
+    outline: 0;
+  }
+  &:hover {
+    outline: 0;
+  }
+  span {
+    transition: all 200ms;
+  }
 }
-.btn-create:hover{
-  background-image: linear-gradient(135deg, $primary-tint-color 10%, $primary-color);
-}
-
-.btn-create:active {
-  outline: 0;
-}
-
-.btn-create:hover {
-  outline: 0;
-}
-
-.btn-create span {
-  transition: all 200ms;
-}
-
-.btn-create:hover span {
-  transform: scale(.7);
-  opacity: .75;
-}
-.page-title .btn-create{
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding-left: 45px;
-}
-
 .page-title .btn-create .material-icons {
   font-size: 34px;
   position: absolute;
   top: 10px;
   left: 10px;
 }
+
 
 .btn,
 button,
@@ -149,22 +146,6 @@ input[type="submit"]:hover{
   background: #ccc;
 }
 
-.mat-dialog-container{
-  padding-bottom: 40px;
-}
-
-@media screen and (max-width: 991px) {
-  .btn-create {
-    font-size: 15px;
-    height: 50px;
-  }
-
-  .btn-create span {
-    line-height: 50px;
-  }
-}
-
-
 
 .container{
   background: #eee;
@@ -179,13 +160,31 @@ input[type="submit"]:hover{
 
 
 /*dialogs */
-.dialog-header .mat-dialog-title{
-  margin-bottom: 0;
+.mat-dialog-container{
+  padding-bottom: 40px;
 }
-.dialog-header p{
-  margin: 0 0 10px;
+.dialog-header {
+  .mat-dialog-title{
+    margin-bottom: 0;
+  }
+  p{
+    margin: 0 0 10px;
+  }
 }
-
 .mat-error{
   font-size: 75%;
 }
+
+
+
+@media screen and (max-width: 991px) {
+  .btn-create {
+    font-size: 15px;
+    height: 50px;
+    span {
+      line-height: 50px;
+    }
+  }
+
+}
+

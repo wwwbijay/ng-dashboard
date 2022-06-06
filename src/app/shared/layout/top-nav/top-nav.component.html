@@ -1,17 +1,29 @@
 <header class="header">
   <div class="wrap">
     <nav class="top_nav">
-
-        <div class="nav-wrapper">
-           
-            <ul>
-              
-              <li class="nav_profile"><a [routerLink]="'/'"> 
-                <img src="assets/default.png">
-            </a></li>
+      <div class="logo">
+        <img src="assets/mypay-logo.png">
+      </div>
+      <div class="nav-wrapper">
+        <ul>
+          <li class="nav_profile has_dropdown">
+            <a [routerLink]="'/'">
+              <img src="assets/default.png" />
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="#">Profile</a>
+              </li>
+              <li>
+                <a href="#">Change Password</a>
+              </li>
+              <li>
+                <a href="#">Logout</a>
+              </li>
             </ul>
-          </div>
-    
+          </li>
+        </ul>
+      </div>
     </nav>
   </div>
 </header>
