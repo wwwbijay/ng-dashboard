@@ -74,14 +74,14 @@ $white: #fff;
     border-color: transparent transparent $white transparent;
   }
   li {
-    a:link,
-    a:visited {
-      display: inline-block;
+    a{
+      display: block;
       padding: 10px 0.8rem;
       width: 100%;
       box-sizing: border-box;
       color: $dropdown-color;
       text-decoration: none;
+      cursor: pointer;
     }
     a:hover {
         background-color: $dropdown-highlight;

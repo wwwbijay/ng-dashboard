@@ -49,6 +49,8 @@ export class AuthService {
   }
 
   logout() {
+    console.log(1);
+    
     localStorage.removeItem('profile');
     this.userProfile.next({
       token: '',
