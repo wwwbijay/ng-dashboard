@@ -96,7 +96,7 @@
               <mat-radio-button class="mr20" value="admin"
                 >Admin</mat-radio-button
               >
-              <mat-radio-button class="mr20" value="client"
+              <mat-radio-button [checked]="true" class="mr20" value="client"
                 >Client</mat-radio-button
               >
               <mat-error *ngIf="role && role.hasError('required')">

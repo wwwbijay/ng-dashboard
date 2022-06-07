@@ -11,11 +11,6 @@ const baseUrl = environment.baseUrl;
 })
 export class ClientsService {
 
-  headers = new HttpHeaders({
-    Authorization: `Bearer ${this.getToken()}`,
-  });
-  options = { headers: this.headers };
-
   constructor(private http: HttpClient, private _auth: AuthService) {}
 
   getToken() {
@@ -25,13 +20,12 @@ export class ClientsService {
 
   getAll(): Observable<any> {
     return this.http.get(
-      baseUrl + '/api/CompanyManager/get-company-all',
-      this.options
+      baseUrl + '/api/CompanyManager/get-company-all'
     );
   }
 
   register(model: any) {
-    return this.http.post(baseUrl + '/api/CompanyManager/create-company', model, this.options);
+    return this.http.post(baseUrl + '/api/CompanyManager/create-company', model);
   }
 
 }

@@ -4,7 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+
 
 const routes: Routes = [
   {
@@ -12,13 +12,6 @@ const routes: Routes = [
     path: 'login',
     data: {
       title: 'Login Page ',
-    },
-  },
-  {
-    component: RegisterComponent,
-    path: 'register',
-    data: {
-      title: 'Register Page ',
     },
   },
   {

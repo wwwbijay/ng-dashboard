@@ -49,8 +49,6 @@ export class AuthService {
   }
 
   logout() {
-    console.log(1);
-    
     localStorage.removeItem('profile');
     this.userProfile.next({
       token: '',
@@ -61,5 +59,10 @@ export class AuthService {
     });
     
     this._router.navigate(['login']);
+  }
+  refreshToken(token: string) {
+    return this.http.post(this.baseUrl + 'refreshtoken', {
+      refreshToken: token
+    });
   }
 }

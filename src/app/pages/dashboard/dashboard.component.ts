@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
@@ -26,6 +29,12 @@ export class DashboardComponent implements OnInit {
   clientLists!: Array<ClientModel>;
   currentUser!:UserModel;
 
+  dataToDisplay = [...this.clientLists];
+  dataSource = new MatTableDataSource<ClientModel>(this.clientLists);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor(
     public _router: Router,
     private _auth: AuthService,
@@ -39,11 +48,18 @@ export class DashboardComponent implements OnInit {
     this.getAllClients();
   }
 
+  ngAfterViewInit() {
+    
+    this.dataSource.paginator = this.paginator;
+    
+  }
+
   getAllClients() {
     this._client.getAll().subscribe({
       next: (x: any) => {
         this.clientLists = [...x];
-        console.log(this.clientLists);
+        
+        this.dataSource.data = this.clientLists;
       },
       error: (err: any) => {
         console.log(err);
@@ -83,6 +99,17 @@ export class DashboardComponent implements OnInit {
   processData(data:any){
     this.OpenSnackBar(data);
     // this.getAllClients();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
+
+    //  this.clientLists.filter = filterValue.trim().toLowerCase();
+
+    // if (this.clientLists.paginator) {
+    //   this.clientLists.paginator.firstPage();
+    // }
   }
 
   OpenSnackBar(message:any){

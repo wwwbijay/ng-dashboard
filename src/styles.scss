@@ -138,14 +138,10 @@ input[type="submit"]{
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  &:hover{
+    background: #ccc;
+  }
 }
-.btn:hover,
-button:hover,
-input[type="button"]:hover,
-input[type="submit"]:hover{
-  background: #ccc;
-}
-
 
 .container{
   background: #eee;
@@ -175,8 +171,6 @@ input[type="submit"]:hover{
   font-size: 75%;
 }
 
-
-
 @media screen and (max-width: 991px) {
   .btn-create {
     font-size: 15px;
@@ -187,4 +181,6 @@ input[type="submit"]:hover{
   }
 
 }
+
+
 

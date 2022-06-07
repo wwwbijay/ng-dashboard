@@ -1,7 +1,11 @@
 <top-nav></top-nav>
 <section class="container">
   <div class="wrap">
-    <div *ngIf="currentUser?.role === 'admin'; else adminComponent"  id="main" class="main">
+    <div
+      *ngIf="currentUser?.role === 'admin'; else adminComponent"
+      id="main"
+      class="main"
+    >
       <div class="page-title">
         <h1>Client List</h1>
         <a [routerLink]="'/'" (click)="newClient()" class="btn-create">
@@ -10,14 +14,27 @@
       </div>
       <!--Client List START-->
       <div class="client-list">
+        <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Ex. Mia"
+            #input
+          />
+        </mat-form-field>
+
         <table
           mat-table
-          [dataSource]="clientLists"
+          [dataSource]="dataSource"
           class="data-table mat-elevation-z2"
+          matSort
         >
           <!-- Position Column -->
           <ng-container matColumnDef="clientCode">
-            <th mat-header-cell *matHeaderCellDef>Client Code</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Client Code
+            </th>
             <td mat-cell *matCellDef="let element">
               {{ element.companyCode }}
             </td>
@@ -25,7 +42,9 @@
 
           <!-- Name Column -->
           <ng-container matColumnDef="clientName">
-            <th mat-header-cell *matHeaderCellDef>Client Name</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Client Name
+            </th>
             <td mat-cell *matCellDef="let element">
               {{ element.companyName }}
             </td>
@@ -33,13 +52,13 @@
 
           <!-- Weight Column -->
           <ng-container matColumnDef="userName">
-            <th mat-header-cell *matHeaderCellDef>User Name</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
             <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
           </ng-container>
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef>Role</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
             <td mat-cell *matCellDef="let element">{{ element.role }}</td>
           </ng-container>
 
@@ -58,7 +77,20 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">
+              No data matching the filter "{{ input.value }}"
+            </td>
+          </tr>
         </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
+        
       </div>
       <!--Client List ENds-->
     </div>
