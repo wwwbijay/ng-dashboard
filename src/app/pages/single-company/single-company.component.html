@@ -1,0 +1,124 @@
+<top-nav></top-nav>
+<div class="sec_heading">
+  <div class="wrap">
+    <div class="page-title">
+      <a
+        *ngIf="accountCompany.role === 'admin'"
+        [routerLink]="'/'"
+        class="header-back-icon"
+      >
+        <span class="material-icons back"> keyboard_backspace </span>
+      </a>
+      <h1 *ngIf="!!company">{{ company.companyName }}</h1>
+      <a
+        *ngIf="accountCompany.role === 'admin'"
+        (click)="newClientApp()"
+        class="btn-create"
+      >
+        <span class="material-icons add">add</span> Create App Client
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="container">
+  <div class="wrap">
+    <div id="main" class="main">
+      <!--Client List START-->
+      <div class="client-list">
+        <table
+          mat-table
+          fixedLayout
+          [dataSource]="appClients"
+          class="data-table mat-elevation-z2"
+        >
+          <!-- clientId Column -->
+          <ng-container matColumnDef="clientId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="25%">
+              Client Id
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.clientId }}
+            </td>
+          </ng-container>
+
+          <!-- clientSecret Column -->
+          <ng-container matColumnDef="clientSecret">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="35%">
+              Client Secret
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.clientSecret }}
+            </td>
+          </ng-container>
+
+          <!-- appEnvironment Column -->
+          <ng-container matColumnDef="appEnvironment">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="15%">
+              App Environment
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.appEnvironment }}
+            </td>
+          </ng-container>
+
+          <!-- ipAddress Column -->
+          <ng-container matColumnDef="ipAddress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="10%">
+              Ip Address
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.ipAddress }}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="7%">
+              Is Active?
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div *ngIf="accountCompany.role === 'admin'">
+                <mat-slide-toggle
+                  [(ngModel)]="element.isActive"
+                  (change)="slideToggle($event, element.clientId)"
+                >
+                </mat-slide-toggle>
+              </div>
+              <div *ngIf="accountCompany.role !== 'admin'">
+                {{ element.isActive }}
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef width="8%">Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="action_icons">
+                <a
+                  (click)="updateClientApp(element.clientId)"
+                  matTooltip="Update Client App"
+                >
+                  <span class="material-icons edit">edit</span>
+                </a>
+
+                <a
+                  (click)="changeSecret(element.clientId)"
+                  matTooltip="Change Secret"
+                >
+                  <span class="material-icons edit"> key </span>
+                </a>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <p *ngIf="appClients?.length == 0">No data available.</p>
+      </div>
+      <!--Client List ENds-->
+    </div>
+    <!--#main ends-->
+  </div>
+</section>

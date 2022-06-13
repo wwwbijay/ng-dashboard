@@ -28,6 +28,15 @@ export class AuthService {
     return !this.jwthelper.isTokenExpired(user.token);
   }
 
+  isAdmin():boolean {
+    const user = this.loadFromLocalStorage();
+    if(user.role === 'admin'){
+      return true
+    }else{
+      return false
+    }
+  }
+
   login(model: any) {
     return this.http.post(this.baseUrl + '/api/CompanyManager/company-login', model);
   }

@@ -32,8 +32,16 @@ export class TokenInterceptor implements HttpInterceptor {
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status !== 401) {
+
+              if( err.status === 403 ){
+                let user = this._auth.loadFromLocalStorage();
+                this._router.navigate(['company/'+user.companyCode]);
+              }
+              
               return;
             }
+            
+            
             this._router.navigate(['login']);
           }
         }

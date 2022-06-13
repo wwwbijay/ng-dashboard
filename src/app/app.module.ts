@@ -3,28 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 
 /* Material Modules Import */
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
-import {MatRadioModule} from '@angular/material/radio';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MaterialModule } from './material.module';
 
-/* Components Import */
+/* Components Import*/
+import { CreateClientComponent } from './dialogs/create-client/create-client.component';
+import { EditClientComponent } from './dialogs/edit-client/edit-client.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ClientDetailsComponent } from './partials/client-details/client-details.component';
 import { TopNavComponent } from './shared/layout/top-nav/top-nav.component';
-import { CreateClientComponent } from './dialogs/create-client/create-client.component';
-import { EditClientComponent } from './dialogs/edit-client/edit-client.component';
-import { DeleteClientComponent } from './dialogs/delete-client/delete-client.component';
-import { TokenInterceptor } from './shared/interceptor/token.interceptor';
+import { SingleCompanyComponent } from './pages/single-company/single-company.component';
+import { CreateAppClientComponent } from './dialogs/create-app-client/create-app-client.component';
+import { EditAppClientComponent } from './dialogs/edit-app-client/edit-app-client.component';
+import { ChangeSecretComponent } from './dialogs/change-secret/change-secret.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +34,10 @@ import { TokenInterceptor } from './shared/interceptor/token.interceptor';
     TopNavComponent,
     CreateClientComponent,
     EditClientComponent,
-    DeleteClientComponent
+    SingleCompanyComponent,
+    CreateAppClientComponent,
+    EditAppClientComponent,
+    ChangeSecretComponent
   ],
   imports: [
     BrowserModule,
@@ -44,12 +45,8 @@ import { TokenInterceptor } from './shared/interceptor/token.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSnackBarModule
+    FormsModule,
+    MaterialModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]

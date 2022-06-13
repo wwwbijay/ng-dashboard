@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteClientComponent } from './delete-client.component';
+import { ChangeSecretComponent } from './change-secret.component';
 
-describe('DeleteClientComponent', () => {
-  let component: DeleteClientComponent;
-  let fixture: ComponentFixture<DeleteClientComponent>;
+describe('ChangeSecretComponent', () => {
+  let component: ChangeSecretComponent;
+  let fixture: ComponentFixture<ChangeSecretComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteClientComponent ]
+      declarations: [ ChangeSecretComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteClientComponent);
+    fixture = TestBed.createComponent(ChangeSecretComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

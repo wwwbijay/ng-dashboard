@@ -2,7 +2,6 @@
 
 @import "variables";
 
-
 html,
 body {
   height: 100%;
@@ -22,26 +21,39 @@ h5 {
 img {
   max-width: 100%;
 }
-h1{
+h1 {
   font-size: 3em !important;
   line-height: 1.5em !important;
 }
-h2{
+h2 {
   font-size: 2.5em !important;
   line-height: 1.5em !important;
 }
-h3{
+h3 {
   font-size: 2em !important;
   line-height: 1.5em !important;
 }
-a{
+h4 {
+  font-size: 1.5em !important;
+  line-height: 1.5em !important;
+}
+a {
   color: $table-blue-bg;
+  cursor: pointer;
 }
 
-/*
+/*******************
 General 
-*/
-.mr20{
+*******************/
+.container {
+  background: #eee;
+  padding: 40px 0;
+}
+
+.align-center {
+  text-align: center;
+}
+.mr20 {
   margin-right: 20px;
 }
 .err_msg {
@@ -60,39 +72,68 @@ General
   font-size: 14px;
   color: red;
 }
-.mat-header-cell{
-  background: $table-blue-bg;
-  color: #fff;
+.full-width {
+  width: 100%;
 }
-.mat-table{
-  font-family: $body-font !important;
-}
-
-.material-icons{
-  font-size: 22px;
-}
-.material-icons.delete{
-  color: red;
-}
-.material-icons{
-  font-size: 22px;
-}
-.wrap{
+.wrap {
   width: 1000px;
   margin: 0 auto;
 }
+.mat-header-cell {
+  background: $table-blue-bg;
+  color: #fff;
+}
+.mat-table {
+  font-family: $body-font !important;
+}
 
-/* CSS */
-.page-title .btn-create{
-  position: absolute;
-  right: 0;
-  top: 10px;
-  padding-left: 45px;
+.action_icons {
+  display: flex;
+  justify-content: space-evenly;
+  a{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 5px;
+    &:hover{
+      background: #fff;
+      box-shadow: -0 0 16px 0 rgba(0,0,0,0.21);
+    -webkit-box-shadow: 0 0 16px 0 rgba(0,0,0,0.21);
+    -moz-box-shadow: 0 0 16px 0 rgba(0,0,0,0.21);
+    .material-icons{
+      color: $primary-tint-color;
+    }
+    }
+  }
+}
+/*******************
+Buttons
+*******************/
+.btn,
+button,
+input[type="button"],
+input[type="submit"] {
+  background: #ddd;
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    background: #ccc;
+  }
 }
 
 .btn-create {
   align-items: center;
-  background-image: linear-gradient(135deg, $primary-color 10%, $primary-tint-color);
+  background-image: linear-gradient(
+    135deg,
+    $primary-color 10%,
+    $primary-tint-color
+  );
   border: 0;
   border-radius: 5px;
   box-sizing: border-box;
@@ -101,12 +142,16 @@ General
   display: inline-block;
   text-decoration: none;
   padding: 14px 20px;
-  &:hover{
-    background-image: linear-gradient(135deg, $primary-tint-color 10%, $primary-color);
+  &:hover {
+    background-image: linear-gradient(
+      135deg,
+      $primary-tint-color 10%,
+      $primary-color
+    );
   }
   &:hover span {
-    transform: scale(.7);
-    opacity: .75;
+    transform: scale(0.7);
+    opacity: 0.75;
   }
   &:active {
     outline: 0;
@@ -118,58 +163,102 @@ General
     transition: all 200ms;
   }
 }
-.page-title .btn-create .material-icons {
-  font-size: 34px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
 
-
-.btn,
-button,
-input[type="button"],
-input[type="submit"]{
-  background: #ddd;
-  display: inline-block;
-  text-decoration: none;
-  padding: 14px 20px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  &:hover{
-    background: #ccc;
+/*******************
+Page Styles
+*******************/
+.page-title {
+  position: relative;
+  z-index: 99;
+  color: #fff;
+  .btn-create {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    padding-left: 45px;
+  }
+  .btn-create .material-icons {
+    font-size: 34px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
 }
 
-.container{
-  background: #eee;
-  padding: 40px 0;
+.select_role_heading {
+  margin: 0 0 10px;
 }
-.data-table{
+
+.sec_heading {
+  background: url(./assets/header-bg-2.jpg) center 45% no-repeat;
+  padding: 100px 0 50px 0;
+  background-size: 100% auto;
+  position: relative;
+  &:after {
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 69, 95, 0.94);
+    z-index: 0;
+    position: absolute;
+  }
+}
+
+/*
+Material 
+*/
+.material-icons {
+  font-size: 22px;
+}
+.material-icons.delete {
+  color: rgb(226, 8, 8);
+}
+.material-icons.edit {
+  color: $font-color-light;
+}
+.data-table {
   width: 100%;
 }
-.page-title{
-  position: relative;
-}
-
 
 /*dialogs */
-.mat-dialog-container{
+.mat-dialog-container {
   padding-bottom: 40px;
 }
+
 .dialog-header {
-  .mat-dialog-title{
+  .mat-dialog-title {
     margin-bottom: 0;
   }
-  p{
+  p {
     margin: 0 0 10px;
   }
 }
-.mat-error{
+
+.mat-error {
   font-size: 75%;
 }
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb,
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-image: linear-gradient(
+    135deg,
+    $primary-color 50%,
+    $primary-tint-color
+  );
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $primary-color;
+}
+
+
 
 @media screen and (max-width: 991px) {
   .btn-create {
@@ -179,8 +268,4 @@ input[type="submit"]{
       line-height: 50px;
     }
   }
-
 }
-
-
-

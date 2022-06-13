@@ -4,6 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SingleCompanyComponent } from './pages/single-company/single-company.component';
 
 
 const routes: Routes = [
@@ -12,13 +13,13 @@ const routes: Routes = [
     path: 'login',
     data: {
       title: 'Login Page ',
-    },
+    }
   },
   {
     component: ForgotPasswordComponent,
     path: 'forgot-password',
     data: {
-      title: 'Forgot Page ',
+      title: 'Forgot Page',
     },
   },
   {
@@ -29,7 +30,15 @@ const routes: Routes = [
       title: 'Dashboard',
     },
     canActivate: [AuthGuard],
-    children: [],
+  },
+  {
+    component: SingleCompanyComponent,
+    path: 'company/:code',
+    data: {
+      breadcrumb: 'company',
+      title: 'Company',
+    },
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

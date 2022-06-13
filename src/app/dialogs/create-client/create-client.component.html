@@ -1,13 +1,12 @@
 <div class="dialog-header">
-  <h3 mat-dialog-title>Register New Company</h3>
-  <p>Please fill in the following form and submit.</p>
+  <h4 mat-dialog-title>Register New Company</h4>
 </div>
 <form [formGroup]="createClientForm" (ngSubmit)="createClient()">
   <div class="dialog-content" mat-dialog-content>
-    <table class="example-full-width" cellspacing="10px">
+    <table class="full-width" cellspacing="10px">
       <tr>
         <td>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="full-width" appearance="fill">
             <mat-label>Company Name</mat-label>
             <input
               matInput
@@ -20,7 +19,7 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="full-width" appearance="fill">
             <mat-label>User Name</mat-label>
             <input matInput formControlName="userName" />
             <mat-error *ngIf="userName && userName.hasError('required')">
@@ -31,14 +30,13 @@
       </tr>
       <tr>
         <td>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="full-width" appearance="fill">
             <mat-label>Email</mat-label>
             <input
               type="email"
               matInput
               placeholder="email@mail.com"
               formControlName="email"
-        
             />
             <mat-error *ngIf="email && email.hasError('email') && !email.hasError('required')">
               Please enter a valid email address
@@ -50,7 +48,7 @@
          
         </td>
         <td>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="full-width" appearance="fill">
             <mat-label>Phone</mat-label>
             <span matPrefix>+977 &nbsp;</span>
             <input
@@ -67,7 +65,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="full-width" appearance="fill">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password" />
             <mat-error *ngIf="password && password.hasError('required')">
@@ -78,7 +76,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="full-width" appearance="fill">
             <mat-label>Address</mat-label>
             <textarea
               matInput
@@ -90,18 +88,16 @@
       </tr>
       <tr class="">
         <td colspan="2">
-          <section class="example-section">
-            <h4 class="example-margin">Select Role:</h4>
+          <section class="section">
+            <h4 class="margin">Select Role:</h4>
             <mat-radio-group formControlName="role">
               <mat-radio-button class="mr20" value="admin"
                 >Admin</mat-radio-button
               >
-              <mat-radio-button [checked]="true" class="mr20" value="client"
+              <mat-radio-button class="mr20" value="client"
                 >Client</mat-radio-button
               >
-              <mat-error *ngIf="role && role.hasError('required')">
-                Please select a role.
-              </mat-error>
+              
             </mat-radio-group>
           </section>
         </td>

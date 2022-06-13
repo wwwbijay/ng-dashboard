@@ -59,6 +59,7 @@ $white: #fff;
   z-index: 2;
   background: $white;
   border-radius: 5px;
+  overflow: hidden;
   list-style: none;
   @include soft-shadow;
   ::before {
@@ -84,8 +85,8 @@ $white: #fff;
       cursor: pointer;
     }
     a:hover {
-        background-color: $dropdown-highlight;
-        color: $white;
+        background-color: #eee;
+        color: $dropdown-highlight;
       }
   }
 }

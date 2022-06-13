@@ -1,0 +1,51 @@
+<div class="dialog-header">
+    <h4 mat-dialog-title>Create New Client App</h4>
+  </div>
+  <form [formGroup]="createClientAppForm" (ngSubmit)="createClientApp()">
+    <div class="dialog-content" mat-dialog-content>
+      <table class="full-width" cellspacing="10px">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Ip Address</mat-label>
+              <input
+                matInput
+                placeholder="Eg: 192.168.1.1"
+                formControlName="ipAddress"
+              />
+              <mat-error *ngIf="ipAddress && ipAddress.hasError('required')">
+                Ip Address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+         
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>App Environment</mat-label>
+              <input type="text" matInput formControlName="appEnvironment" placeholder="Eg: Browser" />
+              <mat-error *ngIf="appEnvironment && appEnvironment.hasError('required')">
+                App Environment is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4 class="select_role_heading">Status</h4>
+                <mat-slide-toggle
+                formControlName="isActive"
+              >
+              </mat-slide-toggle>
+            </td>
+        </tr>
+        
+      </table>
+    </div>
+    <div class="dialog-footer" mat-dialog-actions>
+      <button mat-button mat-dialog-close class="mr20">Close</button>
+      <button class="btn-create" type="submit">Create</button>
+    </div>
+  </form>
+  
